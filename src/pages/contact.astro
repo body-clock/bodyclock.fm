@@ -1,0 +1,39 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Contact - ${SITE_TITLE}`} description="Get in touch." />
+  </head>
+  <body>
+    <Header />
+    <div class="content-wrapper">
+      <div class="left-spacer"></div>
+      <main>
+        <h1 class="display">Contact</h1>
+        <p>Get in touch.</p>
+
+        <div class="contact-content">
+          <p>
+            The best way to reach me is by email at 
+            <a href="mailto:your@email.com">your@email.com</a>.
+          </p>
+
+          <p>
+            You can also find me on:
+          </p>
+          <ul>
+            <li><a href="https://github.com/yourusername">GitHub</a></li>
+            <li><a href="https://twitter.com/yourusername">Twitter</a></li>
+          </ul>
+        </div>
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>

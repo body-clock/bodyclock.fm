@@ -1,0 +1,33 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header />
+    <div class="content-wrapper">
+      <div class="left-spacer"></div>
+      <main>
+        <h1 class="display">Body Clock</h1>
+        <p>Writing about technology, music, and life.</p>
+        
+        <ol class="toc">
+          <li><span class="current">Home</span></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/now">Now</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ol>
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>

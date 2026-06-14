@@ -1,0 +1,66 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`Projects - ${SITE_TITLE}`} description="Things I'm working on." />
+  </head>
+  <body>
+    <Header />
+    <div class="content-wrapper">
+      <div class="left-spacer"></div>
+      <main>
+        <h1 class="display">Projects</h1>
+        <p>Things I'm building and working on.</p>
+
+        <div class="projects-list">
+          <article class="project">
+            <h2>Milk Crate</h2>
+            <p>A tool for organizing and exploring codebases. Learning about agentic development and workflows.</p>
+            <a href="https://github.com/yourusername/milkcrate">View Project →</a>
+          </article>
+
+          <article class="project">
+            <h2>Body Clock (Music)</h2>
+            <p>My music project. Experimental electronic music and sound design.</p>
+            <a href="#">Listen →</a>
+          </article>
+        </div>
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
+
+<style>
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    margin-top: var(--space-xl);
+  }
+  
+  .project {
+    padding-bottom: var(--space-xl);
+    border-bottom: var(--border);
+  }
+  
+  .project:last-child {
+    border-bottom: none;
+  }
+  
+  .project h2 {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .project p {
+    color: var(--primary);
+    opacity: 0.8;
+    margin-bottom: var(--space-sm);
+  }
+</style>

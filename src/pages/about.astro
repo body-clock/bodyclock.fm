@@ -1,0 +1,47 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={`About - ${SITE_TITLE}`} description="About Patrick Perkins." />
+  </head>
+  <body>
+    <Header />
+    <div class="content-wrapper">
+      <div class="left-spacer"></div>
+      <main>
+        <h1 class="display">About</h1>
+
+        <p>I'm Patrick Perkins, also known as Body Clock. I write about technology, music, and life.</p>
+
+        <h2>Quick Facts</h2>
+        <ul>
+          <li>I build things with code, especially Ruby and Rails</li>
+          <li>I make music as Body Clock</li>
+          <li>I'm interested in agentic development and AI workflows</li>
+          <li>I write about personal experiences, including addiction, grief, and recovery</li>
+        </ul>
+
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="https://github.com/yourusername">GitHub</a></li>
+          <li><a href="https://twitter.com/yourusername">Twitter</a></li>
+          <li><a href="mailto:your@email.com">Email</a></li>
+        </ul>
+
+        <h2>About This Site</h2>
+        <p>
+          This site is built with <a href="https://astro.build">Astro</a> and inspired by 
+          <a href="https://www.lkhrs.com">Luke Harris's website</a>. It's a place for my writing 
+          and a way for people to get in touch.
+        </p>
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
