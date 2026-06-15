@@ -80,7 +80,6 @@ a {
   text-decoration-color: var(--color-accent);
   text-decoration-thickness: var(--border-width);
   text-underline-offset: 0.1em;
-  transition: var(--transition-fast);
 }
 
 a:hover {
