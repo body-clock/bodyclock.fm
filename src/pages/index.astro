@@ -1,6 +1,6 @@
 ---
 import DaringLayout from '../layouts/DaringLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
+import PostFeed from '../components/PostFeed.astro';
 import { SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 
@@ -10,18 +10,7 @@ const posts = (await getCollection('blog'))
 ---
 
 <DaringLayout description={SITE_DESCRIPTION}>
-  <div class="post-feed">
-    {posts.map((post) => (
-      <article class="post-item">
-        <h2>
-          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-        </h2>
-        <h6 class="post-date">
-          <FormattedDate date={post.data.date} />
-        </h6>
-      </article>
-    ))}
-  </div>
+  <PostFeed posts={posts} />
   
   <hr />
   
@@ -29,42 +18,6 @@ const posts = (await getCollection('blog'))
 </DaringLayout>
 
 <style>
-  .post-feed {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-5);
-  }
-  
-  .post-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-  
-  .post-item h2 {
-    font-size: 1rem;
-    font-weight: 600;
-    margin-bottom: 0;
-    line-height: 1.4;
-  }
-  
-  .post-item h2 a {
-    color: var(--color-text);
-    text-decoration: none;
-  }
-  
-  .post-item h2 a:hover {
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
-  }
-  
-  .post-date {
-    font-size: var(--text-xs);
-    color: var(--color-text-muted);
-    margin: 0;
-    font-weight: 400;
-  }
-  
   hr {
     border: 0;
     border-top: var(--border);

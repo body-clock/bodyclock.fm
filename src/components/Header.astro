@@ -1,4 +1,5 @@
 ---
+import { navLinks } from '../data/navigation';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -7,11 +8,9 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <nav class="mobile-nav">
-  <a href="/blog" class={currentPath.startsWith('/blog') ? 'current' : ''}>Blog</a>
-  <a href="/projects" class={currentPath === '/projects' ? 'current' : ''}>Projects</a>
-  <a href="/about" class={currentPath === '/about' ? 'current' : ''}>About</a>
-  <a href="/now" class={currentPath === '/now' ? 'current' : ''}>Now</a>
-  <a href="/contact" class={currentPath === '/contact' ? 'current' : ''}>Contact</a>
+  {navLinks.map((link) => (
+    <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''}>{link.label}</a>
+  ))}
 </nav>
 
 <style>
