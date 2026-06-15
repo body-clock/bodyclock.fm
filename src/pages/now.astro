@@ -1,57 +1,42 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import DaringLayout from '../layouts/DaringLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={`Now - ${SITE_TITLE}`} description="What I'm currently focused on." />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1 class="display">Now</h1>
-      <p>What I'm currently focused on.</p>
+<DaringLayout title="Now" description="What I'm currently focused on.">
+  <h1>Now</h1>
 
-      <div class="now-content">
-        <h2>Writing</h2>
-        <p>Working on making this site a place for regular writing. Aiming for weekly posts about tech, music, and personal experiences.</p>
+  <h2>Writing</h2>
+  <p>Working on making this site a place for regular writing. Aiming for weekly posts about tech, music, and personal experiences.</p>
 
-        <h2>Building</h2>
-        <p>Milk Crate — learning about agentic development and building tools that help me think better about code.</p>
+  <h2>Building</h2>
+  <p>Milk Crate — learning about agentic development and building tools that help me think better about code.</p>
 
-        <h2>Reading</h2>
-        <ul>
-          <li><em>The Creative Act</em> by Rick Rubin</li>
-          <li><em>Thinking in Systems</em> by Donella H. Meadows</li>
-        </ul>
+  <h2>Reading</h2>
+  <ul>
+    <li><em>The Creative Act</em> by Rick Rubin</li>
+    <li><em>Thinking in Systems</em> by Donella H. Meadows</li>
+  </ul>
 
-        <h2>Listening</h2>
-        <p>Lots of ambient and experimental electronic music. Working on new Body Clock tracks.</p>
+  <h2>Listening</h2>
+  <p>Lots of ambient and experimental electronic music. Working on new Body Clock tracks.</p>
 
-        <p class="updated">Last updated: June 2026</p>
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+  <p class="updated">Last updated: June 2026</p>
+</DaringLayout>
 
 <style>
-  .now-content {
-    margin-top: var(--space-12);
+  h1 {
+    margin-bottom: var(--space-4);
   }
   
-  .now-content h2 {
-    margin-top: var(--space-12);
+  h2 {
+    margin-top: var(--space-6);
     margin-bottom: var(--space-3);
+    font-size: 1.125rem;
   }
   
   .updated {
-    margin-top: var(--space-16);
-    font-size: var(--text-sm);
+    margin-top: var(--space-6);
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
     font-style: italic;
   }

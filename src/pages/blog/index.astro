@@ -1,9 +1,7 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import DaringLayout from '../../layouts/DaringLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
+import { SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -11,40 +9,71 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={`Blog - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1 class="display">Blog</h1>
-      <p>Writing about technology, music, and life.</p>
-      
-      <div class="post-feed">
-        {posts.map((post) => (
-          <article class="post-item">
-            <h2>
-              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-            </h2>
-            <div class="post-meta">
-              <FormattedDate date={post.data.date} />
-              {post.data.tags && post.data.tags.length > 0 && (
-                <span class="tags">
-                  {post.data.tags.map((tag) => (
-                    <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
-                  ))}
-                </span>
-              )}
-            </div>
-            {post.data.description && (
-              <p class="post-excerpt">{post.data.description}</p>
-            )}
-          </article>
-        ))}
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+<DaringLayout title="Blog" description={SITE_DESCRIPTION}>
+  <h1>Blog</h1>
+  
+  <div class="post-feed">
+    {posts.map((post) => (
+      <article class="post-item">
+        <h2>
+          <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        </h2>
+        <h6 class="post-date">
+          <FormattedDate date={post.data.date} />
+        </h6>
+        {post.data.description && (
+          <p class="post-excerpt">{post.data.description}</p>
+        )}
+      </article>
+    ))}
+  </div>
+</DaringLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-5);
+  }
+  
+  .post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+  
+  .post-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .post-item h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+  
+  .post-item h2 a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  
+  .post-item h2 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  
+  .post-date {
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    margin: 0;
+    font-weight: 400;
+  }
+  
+  .post-excerpt {
+    margin-top: var(--space-2);
+    margin-bottom: 0;
+    font-size: var(--text-sm);
+    opacity: 0.7;
+  }
+</style>

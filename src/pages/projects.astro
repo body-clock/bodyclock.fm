@@ -1,49 +1,31 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_TITLE } from '../consts';
+import DaringLayout from '../layouts/DaringLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead title={`Projects - ${SITE_TITLE}`} description="Things I'm working on." />
-  </head>
-  <body>
-    <Header />
-    <main>
-      <h1 class="display">Projects</h1>
-      <p>Things I'm building and working on.</p>
+<DaringLayout title="Projects" description="Things I'm working on.">
+  <h1>Projects</h1>
 
-      <div class="projects-list">
-        <article class="project">
-          <h2>Milk Crate</h2>
-          <p>A tool for organizing and exploring codebases. Learning about agentic development and workflows.</p>
-          <a href="https://github.com/yourusername/milkcrate">View Project →</a>
-        </article>
+  <article class="project">
+    <h2>Milk Crate</h2>
+    <p>A tool for organizing and exploring codebases. Learning about agentic development and workflows.</p>
+    <a href="https://github.com/yourusername/milkcrate">View Project →</a>
+  </article>
 
-        <article class="project">
-          <h2>Body Clock (Music)</h2>
-          <p>My music project. Experimental electronic music and sound design.</p>
-          <a href="#">Listen →</a>
-        </article>
-      </div>
-    </main>
-    <Footer />
-  </body>
-</html>
+  <article class="project">
+    <h2>Body Clock (Music)</h2>
+    <p>My music project. Experimental electronic music and sound design.</p>
+    <a href="#">Listen →</a>
+  </article>
+</DaringLayout>
 
 <style>
-  .projects-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-12);
-    margin-top: var(--space-12);
+  h1 {
+    margin-bottom: var(--space-5);
   }
   
   .project {
-    padding-bottom: var(--space-12);
+    margin-bottom: var(--space-6);
+    padding-bottom: var(--space-6);
     border-bottom: var(--border);
   }
   
@@ -52,12 +34,16 @@ import { SITE_TITLE } from '../consts';
   }
   
   .project h2 {
+    font-size: 1.125rem;
     margin-bottom: var(--space-2);
   }
   
   .project p {
-    color: var(--color-text);
     opacity: 0.8;
-    margin-bottom: var(--space-3);
+    margin-bottom: var(--space-2);
+  }
+  
+  .project a {
+    font-size: var(--text-sm);
   }
 </style>

@@ -1,0 +1,52 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_TITLE } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE} description={description || ''} />
+  </head>
+  <body>
+    <div class="site-wrapper">
+      <Header />
+      <div class="content-wrapper">
+        <Sidebar />
+        <main>
+          <slot />
+        </main>
+      </div>
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style>
+  .site-wrapper {
+    max-width: 50rem;
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+  
+  .content-wrapper {
+    display: flex;
+    gap: var(--space-8);
+  }
+  
+  main {
+    flex: 1;
+    min-width: 0;
+    padding-top: var(--space-2);
+  }
+</style>
