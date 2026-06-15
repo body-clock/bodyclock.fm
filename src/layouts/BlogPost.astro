@@ -56,21 +56,21 @@ const { title, description, date, updatedDate, tags, heroImage } = Astro.props;
 
 <style>
   .post-header {
-    margin-bottom: var(--space-xl);
-    padding-bottom: var(--space-lg);
+    margin-bottom: var(--space-12);
+    padding-bottom: var(--space-8);
     border-bottom: var(--border);
   }
   
   .post-header h1 {
-    margin-bottom: var(--space-sm);
+    margin-bottom: var(--space-3);
   }
   
   .post-meta {
-    font-size: 0.875rem;
+    font-size: var(--text-sm);
     font-weight: 600;
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: var(--space-3);
     align-items: center;
   }
   
@@ -79,7 +79,7 @@ const { title, description, date, updatedDate, tags, heroImage } = Astro.props;
   }
   
   .hero-image {
-    margin-bottom: var(--space-xl);
+    margin-bottom: var(--space-12);
   }
   
   .hero-image img {
@@ -87,6 +87,6 @@ const { title, description, date, updatedDate, tags, heroImage } = Astro.props;
   }
   
   .prose {
-    max-width: 38.75rem;
+    max-width: var(--content-width);
   }
 </style>
