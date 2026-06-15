@@ -37,7 +37,7 @@ const currentPath = Astro.url.pathname;
     display: none;
   }
   
-  @media (max-width: 640px) {
+  @media (max-width: var(--breakpoint-mobile)) {
     .mobile-nav {
       display: flex;
       justify-content: center;

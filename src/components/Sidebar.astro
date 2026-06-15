@@ -15,14 +15,14 @@ const currentPath = Astro.url.pathname;
 
 <style>
   .sidebar {
-    width: 140px;
+    width: var(--sidebar-width);
     flex-shrink: 0;
     padding-top: 0;
     border-right: var(--border);
     padding-right: var(--space-5);
   }
   
-  @media (max-width: 640px) {
+  @media (max-width: var(--breakpoint-mobile)) {
     .sidebar {
       display: none;
     }

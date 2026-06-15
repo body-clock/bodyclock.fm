@@ -34,7 +34,7 @@ main {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: var(--space-6) var(--gutter);
-  min-height: calc(100vh - 200px);
+  min-height: calc(100vh - var(--space-24));
 }
 
 /* === Typography === */
@@ -65,7 +65,7 @@ h3 {
 p {
   margin-bottom: var(--space-3);
   max-width: var(--content-width);
-  line-height: 1.7;
+  line-height: var(--leading-relaxed);
 }
 
 /* === Links === */
@@ -78,7 +78,7 @@ a {
 }
 
 a:hover {
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: calc(var(--border-width) * 3);
 }
 
 /* === Lists === */
@@ -180,13 +180,13 @@ footer p {
 
 /* === Responsive === */
 
-@media (max-width: 720px) {
+@media (max-width: var(--breakpoint-tablet)) {
   body {
     font-size: var(--text-base);
   }
   
   :root {
-    --gutter: 1.5rem;
+    --gutter: var(--gutter-mobile);
   }
   
   main {
