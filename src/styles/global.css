@@ -186,11 +186,11 @@ footer p {
   }
   
   :root {
-    --gutter: var(--gutter-mobile);
+    --gutter: 0;
   }
   
   main {
-    padding: 0 var(--gutter);
+    padding: 0 var(--space-4);
   }
 }
 

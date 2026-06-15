@@ -39,6 +39,12 @@ const { title, description } = Astro.props;
     padding: 0 var(--gutter);
   }
   
+  @media (max-width: 720px) {
+    .site-wrapper {
+      padding: 0;
+    }
+  }
+  
   .content-wrapper {
     display: flex;
     gap: var(--space-4);
