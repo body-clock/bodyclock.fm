@@ -19,6 +19,8 @@ const currentPath = Astro.url.pathname;
     width: 120px;
     flex-shrink: 0;
     padding-top: var(--space-2);
+    border-right: var(--border);
+    padding-right: var(--space-4);
   }
   
   .author {
@@ -32,6 +34,7 @@ const currentPath = Astro.url.pathname;
     display: flex;
     flex-direction: column;
     gap: var(--space-2);
+    align-items: flex-end;
   }
   
   .sidebar-nav a {
