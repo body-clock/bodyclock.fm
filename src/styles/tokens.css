@@ -31,7 +31,7 @@
   /* === Typography === */
   --font-display: 'Alien Block', system-ui, sans-serif;
   --font-heading: 'Recursive', system-ui, sans-serif;
-  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-body: Georgia, 'Times New Roman', serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
   
   /* Type scale */

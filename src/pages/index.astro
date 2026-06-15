@@ -42,26 +42,29 @@ const posts = (await getCollection('blog'))
 
 <style>
   .tagline {
-    margin-bottom: var(--space-8);
-    opacity: 0.8;
+    margin-bottom: var(--space-6);
+    opacity: 0.7;
+    font-style: italic;
   }
   
   .post-feed {
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
-    margin-bottom: var(--space-8);
+    gap: var(--space-4);
+    margin-bottom: var(--space-6);
   }
   
   .post-item {
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
+    gap: 0;
   }
   
   .post-item h2 {
-    font-size: 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
     margin-bottom: 0;
+    line-height: 1.4;
   }
   
   .post-item h2 a {
@@ -75,15 +78,15 @@ const posts = (await getCollection('blog'))
   }
   
   .post-date {
-    font-size: var(--text-sm);
+    font-size: var(--text-xs);
     color: var(--color-text-muted);
   }
   
   .view-all {
     display: inline-block;
     color: var(--color-text);
-    font-size: var(--text-base);
-    opacity: 0.8;
+    font-size: var(--text-sm);
+    opacity: 0.7;
   }
   
   .view-all:hover {
