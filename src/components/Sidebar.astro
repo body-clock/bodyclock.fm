@@ -23,6 +23,12 @@ const currentPath = Astro.url.pathname;
     padding-right: var(--space-5);
   }
   
+  @media (max-width: 640px) {
+    .sidebar {
+      display: none;
+    }
+  }
+  
   .author {
     font-size: var(--text-sm);
     margin-bottom: var(--space-6);
