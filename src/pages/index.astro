@@ -2,7 +2,13 @@
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
 ---
 
 <!doctype html>
@@ -13,18 +19,78 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
   <body>
     <Header />
     <main>
-      <h1 class="display">Body Clock</h1>
-      <p>Writing about technology, music, and life.</p>
+      <p class="tagline">Writing about technology, music, and life.</p>
       
-      <ol class="toc">
-        <li><span class="current">Home</span></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/now">Now</a></li>
-        <li><a href="/contact">Contact</a></li>
-      </ol>
+      <div class="post-feed">
+        {posts.map((post) => (
+          <article class="post-item">
+            <h2>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            </h2>
+            <time class="post-date">
+              <FormattedDate date={post.data.date} />
+            </time>
+          </article>
+        ))}
+      </div>
+      
+      <a href="/blog" class="view-all">View all posts →</a>
     </main>
     <Footer />
   </body>
 </html>
+
+<style>
+  .tagline {
+    margin-bottom: var(--space-2xl);
+    opacity: 0.8;
+  }
+  
+  .post-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  .post-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .post-item h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+  
+  .post-item h2 a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+  
+  .post-item h2 a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  
+  .post-date {
+    font-size: 0.875rem;
+    color: var(--primary);
+    opacity: 0.6;
+  }
+  
+  .view-all {
+    display: inline-block;
+    color: var(--primary);
+    font-size: 1rem;
+    opacity: 0.8;
+    transition: opacity 0.15s ease-out;
+  }
+  
+  .view-all:hover {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>
