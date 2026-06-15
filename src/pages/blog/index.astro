@@ -18,36 +18,33 @@ const posts = (await getCollection('blog')).sort(
   </head>
   <body>
     <Header />
-    <div class="content-wrapper">
-      <div class="left-spacer"></div>
-      <main>
-        <h1 class="display">Blog</h1>
-        <p>Writing about technology, music, and life.</p>
-        
-        <div class="post-feed">
-          {posts.map((post) => (
-            <article class="post-item">
-              <h2>
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-              </h2>
-              <div class="post-meta">
-                <FormattedDate date={post.data.date} />
-                {post.data.tags && post.data.tags.length > 0 && (
-                  <span class="tags">
-                    {post.data.tags.map((tag) => (
-                      <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
-                    ))}
-                  </span>
-                )}
-              </div>
-              {post.data.description && (
-                <p class="post-excerpt">{post.data.description}</p>
+    <main>
+      <h1 class="display">Blog</h1>
+      <p>Writing about technology, music, and life.</p>
+      
+      <div class="post-feed">
+        {posts.map((post) => (
+          <article class="post-item">
+            <h2>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            </h2>
+            <div class="post-meta">
+              <FormattedDate date={post.data.date} />
+              {post.data.tags && post.data.tags.length > 0 && (
+                <span class="tags">
+                  {post.data.tags.map((tag) => (
+                    <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+                  ))}
+                </span>
               )}
-            </article>
-          ))}
-        </div>
-      </main>
-    </div>
+            </div>
+            {post.data.description && (
+              <p class="post-excerpt">{post.data.description}</p>
+            )}
+          </article>
+        ))}
+      </div>
+    </main>
     <Footer />
   </body>
 </html>

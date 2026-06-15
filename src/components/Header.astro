@@ -1,16 +1,63 @@
 ---
 ---
 
-<header>
-  <div class="header-inner">
-    <div class="logo-column">
-      <a href="/" class="logo-square" aria-label="Home">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12 6 12 12 16 14"/>
-        </svg>
-      </a>
-    </div>
-    <div class="header-space"></div>
-  </div>
+<header class="masthead">
+  <a href="/" class="masthead-title">Body Clock</a>
+  <nav class="masthead-nav">
+    <a href="/blog">Blog</a>
+    <a href="/projects">Projects</a>
+    <a href="/about">About</a>
+    <a href="/now">Now</a>
+    <a href="/contact">Contact</a>
+  </nav>
 </header>
+
+<style>
+  .masthead {
+    text-align: center;
+    padding: var(--space-2xl) var(--gutter) var(--space-lg);
+  }
+  
+  .masthead-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--primary);
+    text-decoration: none;
+    display: block;
+    margin-bottom: var(--space-md);
+    line-height: 1;
+  }
+  
+  .masthead-title:hover {
+    text-decoration: none;
+    opacity: 0.9;
+  }
+  
+  .masthead-nav {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+  }
+  
+  .masthead-nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: opacity 0.15s ease-out;
+  }
+  
+  .masthead-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  
+  .masthead-nav a[aria-current="page"] {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>
