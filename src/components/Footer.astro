@@ -1,14 +1,8 @@
 ---
-import { navLinks } from '../data/navigation';
 const today = new Date();
 ---
 
 <footer>
-  <nav class="footer-nav">
-    {navLinks.map((link) => (
-      <a href={link.href}>{link.label}</a>
-    ))}
-  </nav>
   <p>&copy; {today.getFullYear()} Patrick Perkins</p>
 </footer>
 
@@ -17,26 +11,6 @@ const today = new Date();
     border-top: var(--border);
     padding: var(--space-4) var(--gutter);
     margin-top: auto;
-  }
-  
-  .footer-nav {
-    display: flex;
-    justify-content: center;
-    gap: var(--space-4);
-    margin-bottom: var(--space-3);
-    flex-wrap: wrap;
-  }
-  
-  .footer-nav a {
-    color: var(--color-text);
-    text-decoration: none;
-    font-size: var(--text-xs);
-    opacity: 0.6;
-  }
-  
-  .footer-nav a:hover {
-    opacity: 1;
-    text-decoration: underline;
   }
   
   footer p {
