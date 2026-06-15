@@ -1,0 +1,64 @@
+---
+import { navLinks } from '../data/navigation';
+const currentPath = Astro.url.pathname;
+---
+
+<aside class="sidebar">
+  <p class="author">By <strong>Patrick Perkins</strong></p>
+  
+  <nav class="sidebar-nav">
+    {navLinks.map((link) => (
+      <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''}>{link.label}</a>
+    ))}
+  </nav>
+</aside>
+
+<style>
+  .sidebar {
+    width: var(--sidebar-width);
+    flex-shrink: 0;
+    padding-top: 0;
+    border-right: var(--border);
+    padding-right: var(--space-8);
+  }
+  
+  @media (max-width: 640px) {
+    .sidebar {
+      display: none;
+    }
+  }
+  
+  .author {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-6);
+    line-height: 1.4;
+    opacity: 0.8;
+    white-space: nowrap;
+  }
+  
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    align-items: flex-end;
+  }
+  
+  .sidebar-nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    opacity: 0.7;
+    display: block;
+  }
+  
+  .sidebar-nav a:hover {
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  
+  .sidebar-nav a.current {
+    opacity: 1;
+    font-weight: 600;
+  }
+</style>

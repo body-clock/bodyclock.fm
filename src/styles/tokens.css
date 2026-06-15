@@ -1,0 +1,81 @@
+/*
+ * bodyclock.fm — Design Tokens
+ * A visual design language for consistent spacing, typography, and colors.
+ */
+
+:root {
+  /* === Colors === */
+  
+  /* Purple palette */
+  --purple-50: #faf5ff;
+  --purple-100: #f3e8ff;
+  --purple-200: #e9d5ff;
+  --purple-300: #d8b4fe;
+  --purple-400: #c084fc;
+  --purple-600: #9333ea;
+  --purple-700: #7c3aed;
+  --purple-800: #6d28d9;
+  
+  /* Semantic color roles */
+  --color-bg: var(--purple-50);
+  --color-text: var(--purple-800);
+  --color-text-muted: var(--purple-600);
+  --color-accent: var(--purple-700);
+  --color-border: var(--purple-800);
+  --color-surface: var(--purple-100);
+  
+  /* === Typography === */
+  --font-display: 'Alien Block', system-ui, sans-serif;
+  --font-heading: 'Recursive', system-ui, sans-serif;
+  --font-body: Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  
+  /* Type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  
+  /* Line heights */
+  --leading-tight: 1.1;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.7;
+  
+  /* === Spacing === */
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-24: 6rem;
+  
+  /* === Layout === */
+  --content-width: 45rem;
+  --layout-width: 52rem;
+  --sidebar-width: 140px;
+  --gutter: 2.5rem;
+  --gutter-mobile: 1.5rem;
+  
+  /* === Borders === */
+  --border-width: 1px;
+  --border-color: var(--color-border);
+  --border: var(--border-width) solid var(--border-color);
+  --border-radius: 4px;
+  
+  /* === Accessibility === */
+  --touch-target-min: 44px;
+}
+
+/* Dark mode — semantic roles stay stable, raw values shift */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0f0a1a;
+    --color-text: var(--purple-200);
+    --color-text-muted: var(--purple-400);
+    --color-accent: var(--purple-300);
+    --color-border: #1e1633;
+    --color-surface: #1e1633;
+  }
+}

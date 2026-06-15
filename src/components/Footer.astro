@@ -5,3 +5,18 @@ const today = new Date();
 <footer>
   <p>&copy; {today.getFullYear()} Patrick Perkins</p>
 </footer>
+
+<style>
+  footer {
+    border-top: var(--border);
+    padding: var(--space-4) var(--gutter);
+    margin-top: auto;
+  }
+  
+  footer p {
+    text-align: center;
+    margin-bottom: 0;
+    font-size: var(--text-xs);
+    opacity: 0.5;
+  }
+</style>

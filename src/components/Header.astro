@@ -1,16 +1,84 @@
 ---
+import { navLinks } from '../data/navigation';
+const currentPath = Astro.url.pathname;
 ---
 
-<header>
-  <div class="header-inner">
-    <div class="logo-column">
-      <a href="/" class="logo-square" aria-label="Home">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"/>
-          <polyline points="12 6 12 12 16 14"/>
-        </svg>
-      </a>
-    </div>
-    <div class="header-space"></div>
-  </div>
+<header class="banner">
+  <a href="/" class="banner-title">Body Clock</a>
 </header>
+
+<nav class="mobile-nav">
+  {navLinks.map((link) => (
+    <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''}>{link.label}</a>
+  ))}
+</nav>
+
+<style>
+  .banner {
+    padding: var(--space-6) 0 0;
+    margin-bottom: var(--space-8);
+  }
+  
+  @media (max-width: 640px) {
+    .banner {
+      margin-bottom: var(--space-4);
+    }
+  }
+  
+  .banner-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    color: var(--color-text);
+    text-decoration: none;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+  }
+  
+  .banner-title:hover {
+    text-decoration: none;
+  }
+  
+  .mobile-nav {
+    display: none;
+  }
+  
+  @media (max-width: 640px) {
+    .mobile-nav {
+      display: flex;
+      justify-content: flex-start;
+      gap: var(--space-2);
+      flex-wrap: nowrap;
+      padding-bottom: var(--space-4);
+      border-bottom: var(--border);
+      margin-bottom: var(--space-4);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .mobile-nav a {
+      color: var(--color-text);
+      text-decoration: none;
+      font-size: var(--text-sm);
+      opacity: 0.7;
+      padding: var(--space-2) var(--space-2);
+      min-height: var(--touch-target-min);
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    
+    .mobile-nav a:hover,
+    .mobile-nav a:active {
+      opacity: 1;
+      background-color: var(--color-surface);
+      border-radius: var(--border-radius);
+    }
+    
+    .mobile-nav a.current {
+      opacity: 1;
+      border-bottom: 2px solid var(--color-accent);
+    }
+  }
+</style>
