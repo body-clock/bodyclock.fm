@@ -14,29 +14,30 @@
 
 <style>
   .masthead {
-    text-align: center;
+    max-width: var(--content-width);
+    margin: 0 auto;
     padding: var(--space-16) var(--gutter) var(--space-8);
+    text-align: center;
   }
   
   .masthead-title {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     color: var(--color-text);
     text-decoration: none;
     display: block;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-4);
     line-height: 1;
   }
   
   .masthead-title:hover {
     text-decoration: none;
-    opacity: 0.9;
   }
   
   .masthead-nav {
     display: flex;
     justify-content: center;
-    gap: var(--space-8);
+    gap: var(--space-6);
     flex-wrap: wrap;
   }
   
