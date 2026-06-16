@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bodyclock.fm/sitemap-index.xml

@@ -5,9 +5,20 @@ import DaringLayout from '../layouts/DaringLayout.astro';
 const posts = await getCollection('pages');
 const page = posts.find((p) => p.id === 'about') as CollectionEntry<'pages'>;
 const { Content } = await render(page);
+
+const personSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'Person',
+	name: 'Patrick Perkins',
+	sameAs: [
+		'https://github.com/body-clock',
+		'https://www.youtube.com/@body_clock',
+	],
+	url: 'https://bodyclock.fm',
+};
 ---
 
-<DaringLayout title={page.data.title} description={page.data.description}>
+<DaringLayout title={page.data.title} description={page.data.description} schema={personSchema}>
   <h1>{page.data.title}</h1>
   <Content />
 </DaringLayout>
