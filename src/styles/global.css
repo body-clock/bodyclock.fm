@@ -177,7 +177,6 @@ img {
   
   h2 {
     font-size: clamp(1.25rem, 4vw, 1.5rem);
-    margin-top: var(--space-8);
   }
   
   p {

@@ -10,12 +10,5 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <DaringLayout title="Blog" description={SITE_DESCRIPTION}>
-  <h1>Blog</h1>
   <PostFeed posts={posts} showExcerpts />
 </DaringLayout>
-
-<style>
-  h1 {
-    margin-bottom: var(--space-5);
-  }
-</style>

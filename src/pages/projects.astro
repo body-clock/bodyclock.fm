@@ -8,12 +8,5 @@ const { Content } = await render(page);
 ---
 
 <DaringLayout title={page.data.title} description={page.data.description}>
-  <h1>{page.data.title}</h1>
   <Content />
 </DaringLayout>
-
-<style>
-  h1 {
-    margin-bottom: var(--space-5);
-  }
-</style>
