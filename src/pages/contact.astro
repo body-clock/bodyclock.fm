@@ -1,22 +1,15 @@
 ---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import DaringLayout from '../layouts/DaringLayout.astro';
+
+const posts = await getCollection('pages');
+const page = posts.find((p) => p.id === 'contact') as CollectionEntry<'pages'>;
+const { Content } = await render(page);
 ---
 
-<DaringLayout title="Contact" description="Get in touch.">
-  <h1>Contact</h1>
-  
-  <p>
-    The best way to reach me is by email at 
-    <a href="mailto:your@email.com">your@email.com</a>.
-  </p>
-
-  <p>
-    You can also find me on:
-  </p>
-  <ul>
-    <li><a href="https://github.com/yourusername">GitHub</a></li>
-    <li><a href="https://twitter.com/yourusername">Twitter</a></li>
-  </ul>
+<DaringLayout title={page.data.title} description={page.data.description}>
+  <h1>{page.data.title}</h1>
+  <Content />
 </DaringLayout>
 
 <style>

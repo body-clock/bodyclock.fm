@@ -1,20 +1,30 @@
 ---
-title: 'First post'
-description: 'This is my first post on bodyclock.fm.'
-date: '2026-06-14'
-tags: ['personal']
+title: 'Learning about agentic development through building a real project'
+description: "I'm excited about the future of software. What started as an experiment turned into something real."
+date: '2026-06-16'
+tags: ['dx', 'agentic development', 'milkcrate']
 ---
 
-Welcome to bodyclock.fm. This is my first post.
+I've heard a very similar sentiment from lot of developers recently. Many LLM skeptics have changed their tune when, sometime in the last year, they actually started to write good code. Not only are they writing good code, but they're doing it on your machine. When I say "they", it sounds like a secret cabal of cloud models and agents that are conspiring to make our lives as programmers much more uncertain. Despite this uncertainty, I've found myself re-invigorated with programming and software design at a much higher level. If I can set my local AI development workflow up in a way that produces "good" code (by my standards), then I open myself up to solving much bigger problems. It turns out that these big problems are fun to solve and I think I might actually be quite good at solving them.
 
-I've been thinking about starting a blog for a while now. I've always enjoyed writing, and I want a place where I can share my thoughts on technology, music, and life.
+I've had an idea for about 5 years. I dig for records a lot. Every new place I'm in, I look for record stores in search of interesting finds. The experience of digging is limited to the physical store - I haven't seen a convincing implementation of a digital equivalent. At the very least, I haven't found something that works for me. So I began to think - what would the experience of "crate digging" look like in a digital space? What is it about going into a record store, flipping through the bins, and finding something unique? The tactile experience, the social experience, the curatorial experience - how could those translate to a digital space without trying to say "Look! You don't even have to go to the record store anymore!"
 
-This site is built with [Astro](https://astro.build) and inspired by [Luke Harris's website](https://www.lkhrs.com). It's clean, minimal, and focused on the writing.
+The idea sat on the backburner for a long time. I didn't have the energy to build a project from scratch when I didn't even really know what it would look like. The amount of effort to get started was simply too high for me to pursue an idea that I wasn't really even sure I believed in myself. When Claude Code came around, I thought this idea might be a great playground - I was curious (and skeptical) about the capabilities of these models and I wanted to see what I could prototype. If it doesn't work, I'm out $20 for a Pro subscription - no big deal.
 
-I'm planning to write weekly posts about:
+So I started the project. With a couple brainstorming, planning, and implementation stages, I actually had a working prototype. I liked it enough to start thinking about the project at a high level. Is this something I actually want to build? What would an MVP look like? Is there a viable business idea here? Claude had taken me over the "just get started" hump - I now had something that I actually started to get excited about.
 
-- **Technology** — especially agentic development, AI workflows, and tools I'm building
-- **Music** — my Body Clock project and things I'm listening to
-- **Personal** — experiences with addiction, grief, recovery, and life
+At first, Claude was great. I had little ideas and I implemented them. There was a compounding effect - the more I started to build small features, the more ideas started to emerge. What if we could curate records with our own scoring engine? What actually goes into that scoring engine? How can we use existing metadata to make opinionated calls about what records are "interesting" - and how do my own biases inform the development of an algorithm that must cover diverse subject matter?
 
-Thanks for reading. More to come soon.
+I started to burn through my Claude limits almost immediately. I would implement one big feature, then wait 5 hours for my next fix. That stopped working for me very quickly. If I didn't implement my ideas now, I was going to lose momentum. So I started to think - what are other people doing? In this exploratory phase, I found [Pi](https://pi.dev/) - a barebones harness that removes a lot of the bloat that comes with flagship harnesses (Claude Code, Codex etc). This project aligned nicely with my enthusiasm for [Neovim](https://github.com/body-clock/bodyclock.nvim). I stepped away from IDEs for many of the same reasons I was stepping away from Big Harness. I wanted to design a system around how I work, not design how I work around an existing system. I also just like configuring stuff, so that's a big part of it too. Sometimes, configuring something is more fun than what you can do with said configured thing. In this case, building the developer environment AND building stuff with it were equally as invigorating.
+
+Here's where I've landed:
+- [Pi](https://pi.dev/) as my agent/harness
+- [Compound Engineering](https://every.to/guides/compound-engineering) for keeping project context and documenting solutions
+- [Layered Rails Skills](https://github.com/jasim/layered-rails-skills) for helping me think about implementation in a sustainable way
+- [Inertia Rails Skills](https://github.com/inertia-rails/skills) to inform decisions about my stack (Rails with Inertia is not as well understood by agents as something like NextJS)
+- [OpenCode Go](https://opencode.ai/go?ref=H42H0AY66V) for access to cheap models (they're much better than you might think)
+- [Deepseek v4](https://www.deepseek.com/en/) became my most-used provider, so I threw $40 into the platform. I still haven't used $20 after a lot of heavy use.
+
+This setup works for me. It might not work for you. I worked as a web developer for about 4 years before the age of AI development and that informs a lot of the decisions I make when using these tools. I know about common Ruby/Rails patterns, I know what sustainable software looks like, and I believe in my competence as a programmer. I review and iterate on the implementation details. This is much more difficult if you're just getting started with software.
+
+[milkcrate.fm](https://milkcrate.fm/explore) is coming along really nicely - iteration is fast and I don't have to wait for any institutional decision making. I have total creative freedom in the implementation and development practices, and that's exciting. Now that I have a good MVP, I'm working on building real organic traffic through building relationships with real stores and Discogs sellers. I'm realizing that this is the hard part. I had an idea and built it - now what? Would people actually use it? Is there a market for it? Can I turn this into a real thing that helps sellers sell records and helps buyers buy records, or is it just going to be a nice portfolio piece? Either way, I'm learning a lot and I'm satisfied with either outcome.
