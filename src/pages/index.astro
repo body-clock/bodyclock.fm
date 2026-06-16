@@ -1,3 +1,19 @@
 ---
-return Astro.redirect('/about');
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import DaringLayout from '../layouts/DaringLayout.astro';
+
+const posts = await getCollection('pages');
+const page = posts.find((p) => p.id === 'about') as CollectionEntry<'pages'>;
+const { Content } = await render(page);
 ---
+
+<DaringLayout title={page.data.title} description={page.data.description}>
+  <h1>{page.data.title}</h1>
+  <Content />
+</DaringLayout>
+
+<style>
+  h1 {
+    margin-bottom: var(--space-4);
+  }
+</style>
