@@ -3,7 +3,7 @@ title: About
 description: About Patrick Perkins.
 ---
 
-I'm Patrick - a web developer and musician. For work, I build library tools for the University of Pennsylvania. I'm particularly interesting in devloper tooling and DX. 
+I'm Patrick - a web developer and musician. For work, I build library tools for the University of Pennsylvania. I'm particularly interested in developer tooling and DX. 
 
 I make music as well - my most recent project is made entirely from vinyl samples. I spend too much money on samplers and records.
 
