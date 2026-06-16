@@ -24,7 +24,7 @@ const blogSchema = {
 ---
 
 <DaringLayout title={title} description={description} schema={blogSchema}>
-  <article>
+  <article class="blog-post">
     <header class="post-header">
       <h1>{title}</h1>
       <h6 class="post-date">
@@ -85,6 +85,18 @@ const blogSchema = {
   
   .prose {
     line-height: var(--leading-relaxed);
+    max-width: 65ch;
+  }
+  
+  @media (max-width: 720px) {
+    .post-header h1 {
+      font-size: clamp(1.75rem, 8vw, 2.25rem);
+      line-height: 1.15;
+    }
+    
+    .post-date {
+      font-size: var(--text-sm);
+    }
   }
   
   .post-tags {

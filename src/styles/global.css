@@ -57,7 +57,7 @@ h3 {
 
 p {
   margin-bottom: var(--space-3);
-  max-width: var(--content-width);
+  max-width: 65ch;
   line-height: var(--leading-relaxed);
 }
 
@@ -164,7 +164,7 @@ img {
 
 @media (max-width: 720px) {
   body {
-    font-size: var(--text-base);
+    font-size: 1.125rem;
   }
   
   :root {
@@ -173,6 +173,28 @@ img {
   
   main {
     padding: 0 var(--gutter);
+  }
+  
+  h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  h2 {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+    margin-top: var(--space-8);
+  }
+  
+  p {
+    margin-bottom: var(--space-4);
+  }
+  
+  li {
+    margin-bottom: var(--space-3);
+  }
+  
+  blockquote {
+    margin: var(--space-6) 0;
+    padding-left: var(--space-4);
   }
 }
 
