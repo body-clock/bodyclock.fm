@@ -1,5 +1,5 @@
 ---
-title: 'Learning about agentic development through building a real project'
+title: 'Building Something Real with Agentic Development'
 description: "I'm excited about the future of software. What started as an experiment turned into something real."
 date: '2026-06-16'
 tags: ['dx', 'agentic development', 'milkcrate']
