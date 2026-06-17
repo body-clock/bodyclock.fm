@@ -8,6 +8,7 @@ interface Props {
       title: string;
       date: Date;
       description?: string;
+      tags?: string[];
     };
   }>;
   showExcerpts?: boolean;
@@ -25,6 +26,13 @@ const { posts, showExcerpts = false } = Astro.props;
       <h6 class="post-date">
         <FormattedDate date={post.data.date} />
       </h6>
+      {post.data.tags && post.data.tags.length > 0 && (
+        <div class="post-tags">
+          {post.data.tags.map((tag) => (
+            <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+          ))}
+        </div>
+      )}
       {showExcerpts && post.data.description && (
         <p class="post-excerpt">{post.data.description}</p>
       )}
@@ -73,6 +81,30 @@ const { posts, showExcerpts = false } = Astro.props;
     color: var(--color-text-muted);
     margin: 0;
     font-weight: 400;
+  }
+  
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+  
+  .tag {
+    display: inline-block;
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+    text-decoration: none;
+    padding: 0.15em 0.5em;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    transition: all 0.15s ease;
+  }
+  
+  .tag:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    text-decoration: none;
   }
   
   .post-excerpt {

@@ -33,6 +33,13 @@ const blogSchema = {
           <span class="updated"> (updated <FormattedDate date={updatedDate} />)</span>
         )}
       </h6>
+      {tags && tags.length > 0 && (
+        <div class="post-tags">
+          {tags.map((tag) => (
+            <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+          ))}
+        </div>
+      )}
     </header>
 
     {heroImage && (
@@ -45,13 +52,28 @@ const blogSchema = {
       <slot />
     </div>
 
-    {tags && tags.length > 0 && (
-      <div class="post-tags">
-        {tags.map((tag) => (
-          <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
-        ))}
-      </div>
-    )}
+    <div class="comments-section">
+      <h3>Comments</h3>
+      <div id="giscus-container"></div>
+      <script>
+        const script = document.createElement('script');
+        script.src = 'https://giscus.app/client.js';
+        script.setAttribute('data-repo', 'body-clock/bodyclock.fm');
+        script.setAttribute('data-repo-id', 'R_kgDOS6v9_Q');
+        script.setAttribute('data-category', 'Announcements');
+        script.setAttribute('data-category-id', 'DIC_kwDOS6v9_c4C_V6Y');
+        script.setAttribute('data-mapping', 'pathname');
+        script.setAttribute('data-strict', '0');
+        script.setAttribute('data-reactions-enabled', '1');
+        script.setAttribute('data-emit-metadata', '0');
+        script.setAttribute('data-input-position', 'bottom');
+        script.setAttribute('data-theme', 'transparent_dark');
+        script.setAttribute('data-lang', 'en');
+        script.crossOrigin = 'anonymous';
+        script.async = true;
+        document.getElementById('giscus-container')?.appendChild(script);
+      </script>
+    </div>
   </article>
 </DaringLayout>
 
@@ -109,19 +131,55 @@ const blogSchema = {
   }
   
   .post-tags {
-    margin-top: var(--space-6);
-    padding-top: var(--space-4);
-    border-top: var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+    margin-top: var(--space-3);
   }
   
   .tag {
+    display: inline-block;
     font-size: var(--text-xs);
     color: var(--color-text-muted);
     text-decoration: none;
-    margin-right: var(--space-3);
+    padding: 0.15em 0.5em;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    transition: all 0.15s ease;
   }
   
   .tag:hover {
-    text-decoration: underline;
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    text-decoration: none;
+  }
+  
+  .comments-section {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-8);
+    padding-top: var(--space-6);
+    border-top: var(--border);
+  }
+  
+  .comments-section h3 {
+    margin-bottom: var(--space-1);
+  }
+  
+  .comments-note {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+  
+  .comments-note a {
+    color: var(--color-accent);
+  }
+  
+  @media (max-width: 720px) {
+    .comments-section {
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-6);
+      padding-top: var(--space-4);
+    }
   }
 </style>

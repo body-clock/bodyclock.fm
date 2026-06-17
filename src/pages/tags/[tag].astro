@@ -1,0 +1,52 @@
+---
+import DaringLayout from '../../layouts/DaringLayout.astro';
+import PostFeed from '../../components/PostFeed.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const allTags = new Set<string>();
+  
+  posts.forEach((post) => {
+    if (post.data.tags) {
+      post.data.tags.forEach((tag) => allTags.add(tag));
+    }
+  });
+  
+  return Array.from(allTags).map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((post) => post.data.tags?.includes(tag))
+        .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<DaringLayout title={`#${tag}`} description={`Posts tagged with #${tag}`}>
+  <header class="tag-header">
+    <h1>#{tag}</h1>
+    <p class="tag-count">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+  </header>
+  <PostFeed posts={posts} showExcerpts />
+</DaringLayout>
+
+<style>
+  .tag-header {
+    margin-bottom: var(--space-6);
+  }
+  
+  .tag-header h1 {
+    margin-bottom: var(--space-2);
+  }
+  
+  .tag-count {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin: 0;
+  }
+</style>
