@@ -3,6 +3,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
+import SubscribeModal from '../components/SubscribeModal.astro';
 import { SITE_TITLE } from '../consts';
 
 interface Props {
@@ -30,6 +31,7 @@ const { title, description, schema } = Astro.props;
       </div>
       <Footer />
     </div>
+    <SubscribeModal />
   </body>
 </html>
 
