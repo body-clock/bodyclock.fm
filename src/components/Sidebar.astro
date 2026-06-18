@@ -4,13 +4,15 @@ const currentPath = Astro.url.pathname;
 ---
 
 <aside class="sidebar">
-  <p class="author">By <strong>Patrick Perkins</strong></p>
+  <p class="author">By <a href="/" class={currentPath === '/' ? 'current' : ''}>Patrick Perkins</a></p>
   
   <nav class="sidebar-nav">
     {navLinks.map((link) => (
       <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''}>{link.label}</a>
     ))}
   </nav>
+
+  <button class="subscribe-btn" data-subscribe>Subscribe</button>
 </aside>
 
 <style>
@@ -34,6 +36,41 @@ const currentPath = Astro.url.pathname;
     line-height: 1.4;
     opacity: 0.8;
     white-space: nowrap;
+  }
+  
+  .author a {
+    color: var(--color-text);
+    text-decoration: none;
+  }
+  
+  .author a:hover {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  
+  .author a.current {
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  
+  .subscribe-btn {
+    margin-top: var(--space-8);
+    padding: var(--space-2) var(--space-4);
+    background: transparent;
+    color: var(--color-text-muted);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    font-size: var(--text-xs);
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .subscribe-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
   }
   
   .sidebar-nav {

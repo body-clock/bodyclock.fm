@@ -3,6 +3,8 @@ import DaringLayout from '../../layouts/DaringLayout.astro';
 import PostFeed from '../../components/PostFeed.astro';
 import { getCollection } from 'astro:content';
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
   const allTags = new Set<string>();

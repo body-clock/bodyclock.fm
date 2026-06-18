@@ -11,6 +11,7 @@ const currentPath = Astro.url.pathname;
   {navLinks.map((link) => (
     <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''}>{link.label}</a>
   ))}
+  <button class="mobile-subscribe" data-subscribe>Subscribe</button>
 </nav>
 
 <style>
@@ -79,6 +80,29 @@ const currentPath = Astro.url.pathname;
     .mobile-nav a.current {
       opacity: 1;
       border-bottom: 2px solid var(--color-accent);
+    }
+    
+    .mobile-subscribe {
+      color: var(--color-text);
+      font-size: var(--text-sm);
+      opacity: 0.7;
+      padding: var(--space-2) var(--space-2);
+      min-height: var(--touch-target-min);
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      flex-shrink: 0;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      background: transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    
+    .mobile-subscribe:hover,
+    .mobile-subscribe:active {
+      opacity: 1;
+      background-color: var(--color-surface);
     }
   }
 </style>

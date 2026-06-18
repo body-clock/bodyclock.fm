@@ -7,11 +7,12 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "dev:wrangler": "astro build && wrangler dev",
     "build": "astro build",
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy"
+    "deploy": "npm run build && wrangler deploy && sleep 10 && curl -s -X POST https://bodyclock.fm/api/notify-new -H 'Origin: https://bodyclock.fm' | jq ."
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.7.0",
