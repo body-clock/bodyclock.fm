@@ -12,7 +12,10 @@
     "preview": "npm run build && wrangler dev",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "deploy": "npm run build && wrangler deploy && sleep 10 && curl -s -X POST https://bodyclock.fm/api/notify-new -H 'Origin: https://bodyclock.fm' | jq ."
+    "deploy": "npm run build && wrangler deploy && sleep 10 && curl -s -X POST https://bodyclock.fm/api/notify-new -H 'Origin: https://bodyclock.fm' | jq .",
+    "design:index": "node scripts/design-system/generate-indexes.mjs .",
+    "design:check": "node scripts/design-system/check.mjs",
+    "brand:generate": "node scripts/generate-brand-assets.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "^13.7.0",

@@ -10,5 +10,5 @@ const { Content } = await render(page);
 
 <DaringLayout title={page.data.title} description={page.data.description}>
   <h1>{page.data.title}</h1>
-  <Content />
+  <div class="prose"><Content /></div>
 </DaringLayout>

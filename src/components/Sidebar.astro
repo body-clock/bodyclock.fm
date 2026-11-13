@@ -1,4 +1,5 @@
 ---
+import Button from './Button.astro';
 import { navLinks } from '../data/navigation';
 const currentPath = Astro.url.pathname;
 ---
@@ -6,13 +7,13 @@ const currentPath = Astro.url.pathname;
 <aside class="sidebar">
   <p class="author">By <a href="/" class={currentPath === '/' ? 'current' : ''}>Patrick Perkins</a></p>
   
-  <nav class="sidebar-nav">
+  <nav class="sidebar-nav" aria-label="Main navigation">
     {navLinks.map((link) => (
-      <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''}>{link.label}</a>
+      <a href={link.href} class={currentPath.startsWith(link.href) ? 'current' : ''} aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}>{link.label}</a>
     ))}
   </nav>
 
-  <button class="subscribe-btn" data-subscribe>Subscribe</button>
+  <div class="subscribe-action"><Button variant="secondary" data-subscribe>Subscribe</Button></div>
 </aside>
 
 <style>
@@ -21,7 +22,7 @@ const currentPath = Astro.url.pathname;
     flex-shrink: 0;
     padding-top: 0;
     border-right: var(--border);
-    padding-right: var(--space-8);
+    padding-right: var(--space-4);
   }
   
   @media (max-width: 640px) {
@@ -34,8 +35,8 @@ const currentPath = Astro.url.pathname;
     font-size: var(--text-sm);
     margin-bottom: var(--space-6);
     line-height: 1.4;
-    opacity: 0.8;
-    white-space: nowrap;
+    color: var(--color-text-muted);
+    overflow-wrap: anywhere;
   }
   
   .author a {
@@ -54,25 +55,8 @@ const currentPath = Astro.url.pathname;
     text-underline-offset: 0.2em;
   }
   
-  .subscribe-btn {
-    margin-top: var(--space-8);
-    padding: var(--space-2) var(--space-4);
-    background: transparent;
-    color: var(--color-text-muted);
-    border: var(--border);
-    border-radius: var(--border-radius);
-    font-size: var(--text-xs);
-    cursor: pointer;
-    font-family: inherit;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .subscribe-btn:hover {
-    color: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-  
+  .subscribe-action { margin-top: var(--space-8); }
+
   .sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -81,21 +65,22 @@ const currentPath = Astro.url.pathname;
   }
   
   .sidebar-nav a {
-    color: var(--color-text);
     text-decoration: none;
     font-size: var(--text-sm);
-    opacity: 0.7;
-    display: block;
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    min-height: var(--touch-target-min);
   }
   
   .sidebar-nav a:hover {
-    opacity: 1;
+    color: var(--color-text);
     text-decoration: underline;
     text-underline-offset: 0.2em;
   }
   
   .sidebar-nav a.current {
-    opacity: 1;
+    color: var(--color-text);
     font-weight: 600;
   }
 </style>

@@ -28,11 +28,12 @@ const { title, description = SITE_DESCRIPTION, ...metadata } = Astro.props;
     <script is:inline defer src="https://analytics.printlyrics.app/script.js" data-website-id="1f2c49c2-74e0-4239-b153-0fcf7d494af4"></script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-wrapper">
       <Header />
       <div class="content-wrapper">
         <Sidebar />
-        <main>
+        <main id="main-content" tabindex="-1">
           <slot />
         </main>
       </div>
@@ -67,6 +68,7 @@ const { title, description = SITE_DESCRIPTION, ...metadata } = Astro.props;
   main {
     flex: 1;
     min-width: 0;
-    padding-top: 0;
+    padding-bottom: var(--space-12);
+    overflow-wrap: anywhere;
   }
 </style>

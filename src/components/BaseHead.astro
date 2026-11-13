@@ -19,7 +19,7 @@ interface Props {
 const { title, description = SITE_DESCRIPTION, image, schema, type = 'website', publishedTime, modifiedTime, tags = [] } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
 const ogImage = new URL(image?.src ?? '/og-image.png', Astro.site);
-const imageAlt = image ? title : 'Body Clock — writing about technology, music, and life by Patrick Perkins';
+const imageAlt = image ? title : 'Body Clock in purple lettering on a pale lavender background';
 const serializeSchema = (value: Record<string, unknown>) => JSON.stringify(value).replace(/</g, '\\u003c');
 
 const websiteSchema = {
@@ -35,8 +35,8 @@ const websiteSchema = {
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link
 	rel="alternate"
@@ -46,11 +46,11 @@ const websiteSchema = {
 />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Fonts — Recursive (like Luke Harris) + Inter for body -->
+<!-- Brand display and heading fonts; reading text uses the system serif stack. -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
-	href="https://fonts.googleapis.com/css2?family=Alien+Block&family=Recursive:wght,CASL@300..1000,0..1&family=Inter:wght@400;500;600;700&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Alien+Block&family=Recursive:wght,CASL@300..1000,0..1&display=swap"
 	rel="stylesheet"
 />
 
