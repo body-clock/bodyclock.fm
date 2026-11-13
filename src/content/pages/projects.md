@@ -1,6 +1,6 @@
 ---
 title: Projects
-description: Things I'm working on.
+description: Explore Patrick Perkins’s web development projects, including milkcrate.fm, a record discovery tool for music collectors and Discogs users.
 ---
 
 ## [milkcrate.fm](https://milkcrate.fm) 
