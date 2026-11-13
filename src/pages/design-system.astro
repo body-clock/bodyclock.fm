@@ -1,0 +1,119 @@
+---
+export const prerender = true;
+import DaringLayout from '../layouts/DaringLayout.astro';
+import Button from '../components/Button.astro';
+import Tag from '../components/Tag.astro';
+import { getCollection } from 'astro:content';
+const topics = [...new Set((await getCollection('blog')).flatMap(post => post.data.tags))].slice(0, 3);
+const colors = [
+  ['Canvas', 'bg'], ['Surface', 'surface'], ['Text', 'text'],
+  ['Muted text', 'text-muted'], ['Accent', 'accent'], ['Control border', 'control-border'],
+];
+const spaces = [1, 2, 3, 4, 6, 8, 12];
+---
+<DaringLayout title="Design system" description="The colors, typography, and reusable components behind Body Clock.">
+  <header class="guide-intro">
+    <p class="eyebrow">Body Clock / Reference</p>
+    <h1>Design system</h1>
+    <p>A little expressive. Mostly for reading. The shared visual language behind this site.</p>
+    <p class="guide-note">Colors follow your device’s light or dark appearance.</p>
+  </header>
+
+  <section aria-labelledby="colors">
+    <h2 id="colors">01 / Color</h2>
+    <p>One purple palette, with a role for every color.</p>
+    <div class="swatches">
+      {colors.map(([label, role]) => (
+        <div class="swatch">
+          <div class="swatch-color" style={`background: var(--color-${role})`}></div>
+          <strong>{label}</strong>
+          <code>--color-{role}</code>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section aria-labelledby="typography">
+    <h2 id="typography">02 / Typography</h2>
+    <p class="display-example">Body Clock</p>
+    <p class="guide-note">Alien Block · Masthead</p>
+    <h3>Ideas worth staying up for.</h3>
+    <p class="guide-note">Recursive · Headings and actions</p>
+    <p>Writing about technology, music, and life. Georgia keeps longer passages comfortable to read, with room between lines and a measured column width.</p>
+    <code>const rhythm = 'steady';</code>
+  </section>
+
+  <section aria-labelledby="actions">
+    <h2 id="actions">03 / Actions</h2>
+    <p>Primary for the principal action. Secondary for an optional action.</p>
+    <div class="examples">
+      <Button data-subscribe>Subscribe</Button>
+      <Button variant="secondary" data-subscribe>Open subscription</Button>
+      <Button disabled>Subscribing…</Button>
+    </div>
+    <p class="guide-note">The enabled examples open the site’s subscription form.</p>
+  </section>
+
+  <section aria-labelledby="fields">
+    <h2 id="fields">04 / Fields</h2>
+    <div class="field-example">
+      <label class="field-label" for="example-email">Email address</label>
+      <input class="input" id="example-email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="example-help" />
+      <p class="field-help" id="example-help">An example field. Nothing entered here is submitted.</p>
+    </div>
+    <div class="field-example">
+      <label class="field-label" for="example-invalid">Email address · Invalid</label>
+      <input class="input" id="example-invalid" type="email" value="not-an-email" aria-invalid="true" aria-describedby="example-error" />
+      <p class="field-help" id="example-error">Enter an email address that includes an @ symbol.</p>
+    </div>
+    <div class="field-example">
+      <label class="field-label" for="example-disabled">Email address · Disabled</label>
+      <input class="input" id="example-disabled" type="email" value="reader@example.com" disabled />
+    </div>
+  </section>
+
+  <section aria-labelledby="topics">
+    <h2 id="topics">05 / Topics</h2>
+    <p>Tags navigate to a topic archive. They wrap as a group.</p>
+    <div class="tag-list">{topics.map(tag => <Tag tag={tag} />)}</div>
+  </section>
+
+  <section aria-labelledby="spacing">
+    <h2 id="spacing">06 / Rhythm</h2>
+    <p>A quarter-rem spacing unit keeps related elements together and gives sections room.</p>
+    <div class="space-scale">
+      {spaces.map(space => <div><code>space-{space}</code><span style={`width: var(--space-${space})`}></span><small>{space / 4}rem</small></div>)}
+    </div>
+  </section>
+
+  <section aria-labelledby="reading">
+    <h2 id="reading">07 / Reading</h2>
+    <div class="prose">
+      <h3>Make room for the words</h3>
+      <p>Paragraphs, <a href="/blog">inline links</a>, and headings share the same rhythm across articles and informational pages.</p>
+      <blockquote>A clear page lets the writing set the pace.</blockquote>
+      <ul><li>Use headings in a meaningful order.</li><li>Keep links descriptive.</li><li>Let content determine the height.</li></ul>
+      <pre><code>--content-width: 65ch;</code></pre>
+    </div>
+  </section>
+</DaringLayout>
+
+<style>
+  .guide-intro { margin-bottom: var(--space-12); }
+  .eyebrow, .guide-note { color: var(--color-text-muted); font-size: var(--text-sm); }
+  .eyebrow { font-family: var(--font-heading); }
+  section { padding-block: var(--space-8); border-top: var(--border); }
+  section > h2 { margin-bottom: var(--space-4); }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: var(--space-4); margin-top: var(--space-6); }
+  .swatch { min-width: 0; }
+  .swatch-color { height: var(--space-24); border: var(--border); border-radius: var(--border-radius); margin-bottom: var(--space-2); }
+  .swatch strong, .swatch code { display: block; font-size: var(--text-xs); overflow-wrap: anywhere; }
+  .swatch code { background: none; padding: 0; }
+  .display-example { font-family: var(--font-display); font-size: var(--text-h1); }
+  .examples { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-block: var(--space-4); }
+  .field-example + .field-example { margin-top: var(--space-6); }
+  .space-scale { display: grid; gap: var(--space-3); }
+  .space-scale > div { display: grid; grid-template-columns: 6rem 1fr 4rem; align-items: center; gap: var(--space-2); }
+  .space-scale code, .space-scale small { font-size: var(--text-xs); }
+  .space-scale span { display: block; height: var(--space-3); background: var(--color-accent); max-width: 100%; }
+</style>

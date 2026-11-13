@@ -1,4 +1,5 @@
 ---
+import Button from './Button.astro';
 // Custom subscribe modal - uses our Cloudflare Worker API
 ---
 
@@ -8,12 +9,15 @@
     <button class="modal-close" aria-label="Close">&times;</button>
     <h3>Stay in the loop</h3>
     <p>Get notified when I publish something new.</p>
-    <form class="subscribe-form" id="subscribe-form">
-      <input type="email" name="email" placeholder="your@email.com" required />
-      <button type="submit">Subscribe</button>
+    <form id="subscribe-form">
+      <label class="field-label" for="subscribe-email">Email address</label>
+      <div class="subscribe-form">
+        <input class="input" id="subscribe-email" type="email" name="email" autocomplete="email" placeholder="your@email.com" aria-describedby="subscribe-note" required />
+        <Button type="submit">Subscribe</Button>
+      </div>
     </form>
-    <p class="subscribe-success" style="display: none;">Thanks! You're subscribed.</p>
-    <p class="subscribe-note">No spam. Unsubscribe anytime.</p>
+    <p role="status" class="subscribe-success" style="display: none;">Thanks! You're subscribed.</p>
+    <p class="subscribe-note" id="subscribe-note">No spam. Unsubscribe anytime.</p>
   </div>
 </div>
 
@@ -27,7 +31,7 @@
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
+    transition: opacity var(--duration-fast) ease, visibility var(--duration-fast) ease;
   }
   
   .modal[aria-hidden="false"] {
@@ -38,7 +42,7 @@
   .modal-backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: var(--color-backdrop);
   }
   
   .modal-content {
@@ -46,7 +50,9 @@
     background: var(--color-bg);
     border: var(--border);
     border-radius: var(--border-radius);
-    padding: var(--space-8);
+    padding: var(--space-12) var(--space-6) var(--space-6);
+    max-height: calc(100dvh - var(--space-8));
+    overflow-y: auto;
     max-width: 28rem;
     width: calc(100% - var(--gutter-mobile) * 2);
     text-align: center;
@@ -60,6 +66,8 @@
     color: var(--color-text-muted);
     line-height: 1;
     padding: var(--space-1);
+    min-height: var(--touch-target-min);
+    min-width: var(--touch-target-min);
   }
   
   .modal-close:hover {
@@ -81,38 +89,9 @@
     gap: var(--space-2);
   }
   
-  .subscribe-form input {
-    flex: 1;
-    padding: var(--space-2) var(--space-3);
-    border: var(--border);
-    border-radius: var(--border-radius);
-    background: var(--color-surface);
-    color: var(--color-text);
-    font-size: var(--text-sm);
-    font-family: inherit;
-  }
-  
-  .subscribe-form input:focus {
-    outline: 2px solid var(--color-accent);
-    outline-offset: 2px;
-  }
-  
-  .subscribe-form button {
-    padding: var(--space-2) var(--space-4);
-    background: var(--color-accent);
-    color: var(--color-bg);
-    border: none;
-    border-radius: var(--border-radius);
-    font-size: var(--text-sm);
-    font-weight: 600;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  
-  .subscribe-form button:hover {
-    opacity: 0.9;
-  }
-  
+  .subscribe-form input { flex: 1; }
+  .field-label { text-align: left; }
+
   .subscribe-success {
     color: var(--color-accent);
     font-weight: 600;
@@ -120,7 +99,7 @@
   
   .subscribe-note {
     font-size: var(--text-xs) !important;
-    opacity: 0.6;
+    color: var(--color-text-muted);
     margin-top: var(--space-3) !important;
     margin-bottom: 0 !important;
   }

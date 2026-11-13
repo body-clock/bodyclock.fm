@@ -45,3 +45,15 @@ description: "Optional description"
 
 Your content here.
 ```
+
+## Design system
+
+Start with [DESIGN.md](DESIGN.md) for rules, component contracts, and token usage.
+Visit `/design-system` during local development for live examples of typography,
+colors, buttons, fields, tags, spacing, and prose in your system theme.
+
+```bash
+npm run design:check  # validate contracts and generated catalogs
+npm run design:index  # regenerate catalogs after contract changes
+npm run build
+```

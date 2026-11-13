@@ -1,0 +1,65 @@
+/* Native controls: use these classes without replacing native semantics. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--touch-target-min);
+  padding: var(--space-2) var(--space-4);
+  border: var(--border-width) solid var(--color-accent);
+  border-radius: var(--border-radius);
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  line-height: var(--leading-normal);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast), color var(--duration-fast);
+}
+.button--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-control-border);
+}
+.button:hover:not(:disabled) { background: var(--color-text); color: var(--color-bg); }
+.button:disabled { opacity: 0.55; cursor: not-allowed; }
+.button--secondary:hover:not(:disabled) { background: var(--color-surface); color: var(--color-text); }
+
+.field-label { display: block; font-size: var(--text-sm); margin-bottom: var(--space-2); }
+.input {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--touch-target-min);
+  padding: var(--space-2) var(--space-3);
+  border: var(--border-width) solid var(--color-control-border);
+  border-radius: var(--border-radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--text-base);
+}
+.input::placeholder { color: var(--color-text-muted); opacity: 1; }
+.input:disabled { opacity: 0.55; cursor: not-allowed; }
+.input[aria-invalid="true"] { border-width: 2px; border-style: dashed; }
+.field-help { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-2); }
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target-min);
+  padding: var(--space-1) var(--space-3);
+  border: var(--border);
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-xs);
+  line-height: var(--leading-normal);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+.tag:hover { background: var(--color-accent); color: var(--color-on-accent); text-decoration: none; }
+.tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-2); }

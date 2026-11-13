@@ -23,6 +23,10 @@
   --color-accent: var(--purple-700);
   --color-border: var(--purple-800);
   --color-surface: var(--purple-100);
+  --color-on-accent: var(--purple-50);
+  --color-control-border: var(--purple-600);
+  --color-focus: var(--purple-700);
+  --color-backdrop: rgb(15 10 26 / 65%);
   
   /* === Typography === */
   --font-display: 'Alien Block', system-ui, sans-serif;
@@ -35,6 +39,9 @@
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
+  --text-h1: clamp(1.75rem, 4vw, 2.25rem);
+  --text-h2: clamp(1.375rem, 3vw, 1.75rem);
+  --text-h3: clamp(1.125rem, 2vw, 1.375rem);
   
   /* Line heights */
   --leading-tight: 1.1;
@@ -55,7 +62,7 @@
   /* === Layout === */
   --content-width: 65ch;
   --layout-width: 52rem;
-  --sidebar-width: 140px;
+  --sidebar-width: 10rem;
   --gutter: 2.5rem;
   --gutter-mobile: 1rem;
   
@@ -64,6 +71,8 @@
   --border-color: var(--color-border);
   --border: var(--border-width) solid var(--border-color);
   --border-radius: 4px;
+  --radius-pill: 999px;
+  --duration-fast: 150ms;
   
   /* === Accessibility === */
   --touch-target-min: 44px;
@@ -78,5 +87,8 @@
     --color-accent: var(--purple-300);
     --color-border: #1e1633;
     --color-surface: #1e1633;
+    --color-on-accent: #0f0a1a;
+    --color-control-border: var(--purple-400);
+    --color-focus: var(--purple-300);
   }
 }

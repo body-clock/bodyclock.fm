@@ -1,9 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <style>
-    .monogram { fill: #000; }
-    @media (prefers-color-scheme: dark) {
-      .monogram { fill: #FFF; }
-    }
-  </style>
-  <text class="monogram" x="64" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="80" font-weight="700" text-anchor="middle" letter-spacing="-4">BC</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">Body Clock</title>
+  <!-- Alien Block outlines; SIL OFL license: /licenses/alien-block.txt. Brand colors match tokens.css. -->
+  <rect width="128" height="128" fill="#faf5ff"/>
+  <g fill="#6d28d9" transform="translate(17.06122 86.53061) scale(0.0625850 -0.0625850)"><path transform="translate(0 0)" d="M548 0H15V720H548Q600 720 642.0 694.5Q684 669 709.5 627.0Q735 585 735 533Q735 475 702.5 428.0Q670 381 619 360Q670 339 702.5 292.5Q735 246 735 187Q735 136 709.5 93.5Q684 51 642.0 25.5Q600 0 548 0Z"/><path transform="translate(750 0)" d="M735 0H375Q300 0 235.0 28.0Q170 56 120.5 105.5Q71 155 43.0 220.0Q15 285 15 360Q15 435 43.0 500.0Q71 565 120.5 614.5Q170 664 235.0 692.0Q300 720 375 720H735Z"/></g>
 </svg>
