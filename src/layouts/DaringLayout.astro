@@ -25,6 +25,7 @@ const { title, description = SITE_DESCRIPTION, ...metadata } = Astro.props;
 <html lang="en">
   <head>
     <BaseHead title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE} description={description} {...metadata} />
+    <script is:inline defer src="https://analytics.printlyrics.app/script.js" data-website-id="1f2c49c2-74e0-4239-b153-0fcf7d494af4"></script>
   </head>
   <body>
     <div class="site-wrapper">
