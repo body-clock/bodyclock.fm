@@ -2,19 +2,30 @@
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import DaringLayout from './DaringLayout.astro';
+import { SITE_DESCRIPTION } from '../consts';
 import FormattedDate from '../components/FormattedDate.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, date, updatedDate, tags, heroImage } = Astro.props;
+const { title, description = SITE_DESCRIPTION, date, updatedDate, tags, heroImage } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site).href;
+const imageURL = new URL(heroImage?.src ?? '/og-image.png', Astro.site).href;
 
 const blogSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'BlogPosting',
+	'@id': `${canonicalURL}#article`,
+	url: canonicalURL,
+	mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalURL },
+	image: [imageURL],
+	inLanguage: 'en',
+	keywords: tags.join(', '),
+	isPartOf: { '@id': new URL('/#website', Astro.site).href },
 	headline: title,
 	description: description,
 	datePublished: date.toISOString(),
-	...(updatedDate && { dateModified: updatedDate.toISOString() }),
+	dateModified: (updatedDate ?? date).toISOString(),
 	author: {
 		'@type': 'Person',
 		name: 'Patrick Perkins',
@@ -23,20 +34,20 @@ const blogSchema = {
 };
 ---
 
-<DaringLayout title={title} description={description} schema={blogSchema}>
+<DaringLayout title={title} description={description} schema={blogSchema} type="article" image={heroImage} publishedTime={date} modifiedTime={updatedDate ?? date} tags={tags}>
   <article class="blog-post">
     <header class="post-header">
       <h1>{title}</h1>
-      <h6 class="post-date">
+      <p class="post-date">
         <FormattedDate date={date} />
         {updatedDate && (
           <span class="updated"> (updated <FormattedDate date={updatedDate} />)</span>
         )}
-      </h6>
+      </p>
       {tags && tags.length > 0 && (
         <div class="post-tags">
           {tags.map((tag) => (
-            <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+            <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">#{tag}</a>
           ))}
         </div>
       )}
@@ -53,7 +64,7 @@ const blogSchema = {
     </div>
 
     <div class="comments-section">
-      <h3>Comments</h3>
+      <h2>Comments</h2>
       <div id="giscus-container"></div>
       <script>
         const script = document.createElement('script');
@@ -161,7 +172,7 @@ const blogSchema = {
     border-top: var(--border);
   }
   
-  .comments-section h3 {
+  .comments-section h2 {
     margin-bottom: var(--space-1);
   }
   

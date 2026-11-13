@@ -1,6 +1,6 @@
 ---
 title: 'Building Something Real with Agentic Development'
-description: "I'm excited about the future of software. What started as an experiment turned into something real."
+description: "How agentic development helped me build milkcrate.fm, with a practical look at AI coding tools, developer workflows, and turning an idea into a working product."
 date: '2026-06-16'
 tags: ['dx', 'agentic development', 'milkcrate']
 ---

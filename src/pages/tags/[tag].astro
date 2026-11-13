@@ -29,7 +29,7 @@ export async function getStaticPaths() {
 const { tag, posts } = Astro.props;
 ---
 
-<DaringLayout title={`#${tag}`} description={`Posts tagged with #${tag}`}>
+<DaringLayout title={`#${tag}`} description={`Articles about ${tag} by Patrick Perkins on Body Clock. Explore notes on developer tools, building software, and creative projects.`}>
   <header class="tag-header">
     <h1>#{tag}</h1>
     <p class="tag-count">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>

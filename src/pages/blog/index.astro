@@ -1,7 +1,7 @@
 ---
+export const prerender = true;
 import DaringLayout from '../../layouts/DaringLayout.astro';
 import PostFeed from '../../components/PostFeed.astro';
-import { SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort(
@@ -9,6 +9,7 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<DaringLayout title="Blog" description={SITE_DESCRIPTION}>
+<DaringLayout title="Blog" description="Articles by Patrick Perkins on web development, developer tools, agentic development, and building software and music projects.">
+  <h1>Blog</h1>
   <PostFeed posts={posts} showExcerpts />
 </DaringLayout>

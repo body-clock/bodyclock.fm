@@ -1,4 +1,5 @@
 ---
+export const prerender = true;
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import DaringLayout from '../layouts/DaringLayout.astro';
 
@@ -8,5 +9,6 @@ const { Content } = await render(page);
 ---
 
 <DaringLayout title={page.data.title} description={page.data.description}>
+  <h1>{page.data.title}</h1>
   <Content />
 </DaringLayout>

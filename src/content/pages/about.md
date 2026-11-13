@@ -1,6 +1,6 @@
 ---
 title: About
-description: About Patrick Perkins.
+description: Meet Patrick Perkins, a web developer and musician building research tools at California Digital Library and practical web tools for musicians.
 ---
 
 I'm Patrick - a web developer and musician. For work, I build field station research tools for California Digital Library. I'm particularly interested in developer tooling and DX. 

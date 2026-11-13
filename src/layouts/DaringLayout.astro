@@ -4,21 +4,27 @@ import Header from '../components/Header.astro';
 import Sidebar from '../components/Sidebar.astro';
 import Footer from '../components/Footer.astro';
 import SubscribeModal from '../components/SubscribeModal.astro';
-import { SITE_TITLE } from '../consts';
+import type { ImageMetadata } from 'astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 interface Props {
   title?: string;
   description?: string;
-  schema?: Record<string, any>;
+  schema?: Record<string, unknown>;
+  image?: ImageMetadata;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  tags?: string[];
 }
 
-const { title, description, schema } = Astro.props;
+const { title, description = SITE_DESCRIPTION, ...metadata } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE} description={description || ''} schema={schema} />
+    <BaseHead title={title ? `${title} - ${SITE_TITLE}` : SITE_TITLE} description={description} {...metadata} />
   </head>
   <body>
     <div class="site-wrapper">

@@ -1,6 +1,6 @@
 ---
 title: 'Versioning is a solved problem. Stop doing it by hand!'
-description: "release-please is a must-have for every project I start. This is how I set up my projects and repositories so my versioning is always an accurate reflection of the current application state."
+description: "Automate semantic versioning with release-please, Conventional Commits, and squash merges. My workflow for keeping releases in sync with application changes."
 date: '2026-11-13'
 tags: ['dx', 'agentic development', 'release-please', 'versioning']
 ---

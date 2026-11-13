@@ -21,15 +21,15 @@ const { posts, showExcerpts = false } = Astro.props;
   {posts.map((post) => (
     <article class="post-item">
       <h2>
-        <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+        <a href={`/blog/${post.id}`}>{post.data.title}</a>
       </h2>
-      <h6 class="post-date">
+      <p class="post-date">
         <FormattedDate date={post.data.date} />
-      </h6>
+      </p>
       {post.data.tags && post.data.tags.length > 0 && (
         <div class="post-tags">
           {post.data.tags.map((tag) => (
-            <a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+            <a href={`/tags/${encodeURIComponent(tag)}`} class="tag">#{tag}</a>
           ))}
         </div>
       )}
