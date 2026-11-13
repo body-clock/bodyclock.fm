@@ -1,0 +1,30 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "bodyclockfm",
+  "account_id": "cd552ebf182b8a74aeac9b60bec95b06",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "compatibility_date": "2026-04-15",
+  "keep_vars": true,
+  "vars": {
+    "FROM_EMAIL": "patrick@bodyclock.fm"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "bodyclock-subscribers",
+      "database_id": "57cfb2bc-b93c-498d-aab0-5762b8bd123c"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "7de7c9bb3ce74b0aa8f58f8d565486ff"
+    }
+  ],
+  "images": {
+    "binding": "IMAGES"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
